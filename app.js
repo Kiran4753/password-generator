@@ -13,7 +13,6 @@ function generatePassword(passwordLength = 8) {
     password += passwordStr[randomNum];
   }
   showPassword.value = password;
-  console.log(showPassword.innerHTML);
   document.querySelector(".password-length").innerHTML = `(${passwordLength})`;
 }
 
