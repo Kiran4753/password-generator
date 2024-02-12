@@ -9,12 +9,18 @@
 <body>
     
     <div class="container">
-        <h2>Password Generator</h2>
-        <input type="text" class="password-holder" placeholder="click on generate button...">
-        <div class="btn-cont">
-            <button class="generate">generate</button>
-            <button class="copy">copy</button>
+        <h1>Password Generator</h1>
+        <div class="top-container">
+            <input class="showPassword" type="text" value="">
+            <button class="copy-btn">copy</button>
         </div>
+
+        <div class="bottom-container">
+            <label for="passwordRange">Password length <span class="password-length">(0)</span>
+            </label>
+            <input id="passwordRange" type="range" min="8" max="20" class="password-range" value="8">
+        </div>
+        
     </div>
     <script src="./app.js"></script>
 </body>

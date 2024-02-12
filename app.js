@@ -1,26 +1,29 @@
 
-// string holder
-let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-'abcdefghijklmnopqrstuvwxyz0123456789@#$%&*-?!'; 
+const showPassword = document.querySelector(".showPassword");
+const passwordRange = document.querySelector(".password-range");
+const copyBtn = document.querySelector(".copy-btn");
+const passwordStr =
+  " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSRUVWXYZ!@#$%^&*()_+ ";
 
-const generateBtn = document.querySelector('.generate');
-const copyBtn = document.querySelector('.copy');
-const showPassword = document.querySelector('.password-holder')
+function generatePassword(passwordLength = 8) {
+  let password = "";
 
+  for (i = 0; i < passwordLength; i++) {
+    let randomNum = Math.floor(Math.random() * passwordStr.length);
+    password += passwordStr[randomNum];
+  }
+  showPassword.value = password;
+  console.log(showPassword.innerHTML);
+  document.querySelector(".password-length").innerHTML = `(${passwordLength})`;
+}
 
-generateBtn.addEventListener('click', function(){
-    // using string value to generate random password
-    let pass = '';
-    for (let i = 1; i <= 8; i++) {
-        let char = Math.floor(Math.random()
-            * str.length + 1);
- 
-        pass += str.charAt(char)
-    }
-    showPassword.value = pass
-})
+generatePassword();
 
-copyBtn.addEventListener('click', function(){
-    showPassword.select();
-    navigator.clipboard.writeText(showPassword.value)
-})
+passwordRange.addEventListener("change", function (e) {
+  generatePassword(e.target.value);
+});
+
+copyBtn.addEventListener("click", function () {
+  showPassword.select()
+  navigator.clipboard.writeText(showPassword.value);
+});
